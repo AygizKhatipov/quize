@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const usersRouter = require('./users.routes')
-const Topics = require('./Topics.routes')
-const Questions = require('./Questions.routes')
+const topicsRouter = require('./Topics.routes')
+const questionsRouter = require('./Questions.routes')
 
 
 router.use('/users', usersRouter)
-router.use('/categoryone', Topics)
-router.use('/categorytwo', Questions)
+router.use('/topics', topicsRouter)
+router.use('/questions', questionsRouter)
 
 module.exports = router
