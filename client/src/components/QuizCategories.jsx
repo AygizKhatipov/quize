@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link, useNavigate, useHistory  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function QuizCategories({ topic }) {
   const navigate = useNavigate();
 
-  const history = useHistory()
-
   function goToQuestions() {
-    const {id} = topic
-    history.push('/', id)
+    // const { id } = topic;
+    const { id } = { id: 3 };
+    navigate('/questions', { state: { id } });
   }
-  
+
   return (
     <>
       <div className="card">
@@ -25,7 +24,10 @@ function QuizCategories({ topic }) {
             bulk of the cards content.
           </p> */}
           <button
-          onClick={goToQuestions} type="button" className="btn btn-primary">
+            onClick={goToQuestions}
+            type="button"
+            className="btn btn-primary"
+          >
             Начать игру
           </button>
         </div>

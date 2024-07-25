@@ -4,6 +4,8 @@ import NewGame from './pages/NewGame';
 import TopPlayers from './pages/TopPlayers';
 import Nav from './components/Nav';
 import './App.css';
+import Questions from './components/Questions';
+
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/newgame" element={<NewGame />} />
           <Route path="/topplayers" element={<TopPlayers />} />
-          <Route path="/questions" element={<TopPlayers />} />
+          <Route path="/questions" element={<Questions />} />
         </Routes>
       </BrowserRouter>
     </>
