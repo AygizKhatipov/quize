@@ -12,16 +12,11 @@ function QuizCategories({ topic }) {
   return (
     <>
       <div className="card">
-        <img src='{topic.img}' className="card-img-top" alt="..." />
-        {/* DELETE Quotes in src */}
+        <img src={topic.img} className="card-img-top" alt="..." />
 
         <div className="card-body">
-          {/* {topic.title} */}
           <h5 className="card-title"> {topic.title}</h5>
-          {/* <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </p> */}
+
           <button
             onClick={goToQuestions}
             type="button"

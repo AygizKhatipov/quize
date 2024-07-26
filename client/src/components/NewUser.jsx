@@ -15,6 +15,8 @@ function NewUser({ setShow }) {
           <input
             onChange={(event) => setName(event.target.value)}
             type="text"
+            required
+            placeholder="Введите имя"
             className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
