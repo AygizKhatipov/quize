@@ -8,11 +8,12 @@ module.exports = {
       [
         {
           title: "Russian language",
-          img: 'image1',
+          img: "",
         },
         {
           title: "Capitals",
-          img: 'image2',
+          img: "",
+
         },
       ],
       {}
