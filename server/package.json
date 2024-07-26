@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon index.js --ext js,json,jsx",
+    "dev": "nodemon app.js --ext js,json,jsx",
     "db:c": "npx sequelize db:create",
     "db:m": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
     "db:s": "npx sequelize db:seed:all",
