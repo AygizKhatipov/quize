@@ -12,11 +12,11 @@ router.route('/')
     }
 })
 
-router.route('/:id')
+router.route('/:topicId')
 .get(async(req,res)=> {
     try {
-        const {id}= req.params
-        const readQuestionsId = await Questions.findAll({where: {id}})
+        const {topicId}= req.params
+        const readQuestionsId = await Questions.findAll({where: {topicId}})
         res.status(200).json(readQuestionsId)
     } catch (error) {
         res.status(500).json({error: error.message})
