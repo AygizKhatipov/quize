@@ -11,12 +11,14 @@ function Questions() {
   const [questions, setQuestions] = useState([]);
 
   const [answer, setAnswer] = useState("");
+  // const [inputvalue, setInputvalue] = useState("");
 
   const [indexQuest, setIndexQuest] = useState(0);
 
   const [load, setLoad] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [corrAnsw, setCorrAnsw] = useState("");
+  const [nextQuestionPermission, setNextQuestionPermission] = useState(false);
 
   async function getQuestions() {
     const { data } = await apiAxiosInstance.get(`/questions/${id}`);
@@ -29,9 +31,12 @@ function Questions() {
   }, []);
 
   function nextQuestion() {
-    if (correct) {
+    if (nextQuestionPermission) {
       setIndexQuest((prev) => {
         if (prev < questions.length - 1) {
+          setCorrect(false);
+          setNextQuestionPermission(false);
+          setAnswer('')
           return prev + 1;
         } else {
           navigate("/NewGame");
@@ -41,12 +46,11 @@ function Questions() {
   }
 
   function checkAnswer() {
-   
-
+    setCorrect(true);
     if (
       answer.trim().toUpperCase() === questions[indexQuest].answer.toUpperCase()
     ) {
-      setCorrect(true);
+      setNextQuestionPermission(true);
       setCorrAnsw("Правильно");
     } else {
       setCorrAnsw("Неправильно");
@@ -66,13 +70,14 @@ function Questions() {
             <div className="card-body">
               <h5 className="card-title"> {questions[indexQuest].question} </h5>
 
-             <p className="card-text">
+              <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
 
               <input
                 onChange={(event) => setAnswer(event.target.value)}
+                value={answer}
                 type="text"
                 required
                 placeholder="Введите ответ"
@@ -80,6 +85,7 @@ function Questions() {
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
               />
+
               {correct && corrAnsw}
               <button
                 onClick={checkAnswer}
