@@ -1,0 +1,121 @@
+
+
+
+     {/* <QuestTemplate
+        question={questions[indexQuest]}
+        setIndexQuest={setIndexQuest}
+        questions={questions}
+      /> */}
+
+// {load ? (
+//   <>
+
+//   <div className="card">
+//         <img
+//           src={questions[indexQuest].img}
+//           className="card-img-top"
+//           alt="..."
+//         />
+//         <div className="card-body">
+//           <h5 className="card-title"> {questions[indexQuest].question} </h5>
+//           <p className="card-text">
+//             Some quick example text to build on the card title and make up the
+//             bulk of the card's content.
+//           </p>
+
+//           <button
+//             onClick={nextQuestion}
+//             type="button"
+//             className="btn btn-primary"
+//           >
+//             Следующий вопрос
+//           </button>
+
+//   </>)
+//   :(  <div>loading</div>  ) }
+
+//           {/* {indexQuest === 4 ? (
+//             <button
+//               onClick={nextQuestion}
+//               type="button"
+//               className="btn btn-primary"
+//             >
+//               В начало
+//             </button>
+//           ) : (
+//             <button
+//               onClick={nextQuestion}
+//               type="button"
+//               className="btn btn-primary"
+//             >
+//               Следующий вопрос
+//             </button>
+//           )} */}
+//         </div>
+//       </div>
+
+
+
+
+
+/////
+
+
+
+
+      {load ? 
+      
+      (
+        <>
+          <div className="card">
+            <img
+              src={questions[indexQuest].img}
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title"> {questions[indexQuest].question} </h5>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+
+              <button
+                onClick={nextQuestion}
+                type="button"
+                className="btn btn-primary"
+              >
+                Следующий вопрос
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div>loading</div>
+      )}
+
+
+
+
+
+
+
+      ////////
+
+
+
+      {load ? (
+        <QuestTemplate
+          question={questions[indexQuest]}
+          setIndexQuest={setIndexQuest}
+          questions={questions}
+        />
+      ) : (
+        <div>loading</div>
+      )}
+
+
+
+          "username": "postgres",
+    "password": "postgres",
+    "database": "quiz",
