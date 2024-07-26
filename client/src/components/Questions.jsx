@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import apiAxiosInstance from "../service/apiAxiosInstance";
-import QuestTemplate from "./QuestTemplate";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import apiAxiosInstance from '../service/apiAxiosInstance';
+import QuestTemplate from './QuestTemplate';
 
 function Questions() {
   const location = useLocation();
   const { id } = location.state || {};
-  const navigate = useNavigate();
 
   const [questions, setQuestions] = useState([]);
 
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState('');
   // const [inputvalue, setInputvalue] = useState("");
 
   const [indexQuest, setIndexQuest] = useState(0);
-
   const [load, setLoad] = useState(false);
   const [correct, setCorrect] = useState(false);
-  const [corrAnsw, setCorrAnsw] = useState("");
+  const [corrAnsw, setCorrAnsw] = useState('');
   const [nextQuestionPermission, setNextQuestionPermission] = useState(false);
 
   async function getQuestions() {
@@ -36,10 +34,10 @@ function Questions() {
         if (prev < questions.length - 1) {
           setCorrect(false);
           setNextQuestionPermission(false);
-          setAnswer('')
+          setAnswer('');
           return prev + 1;
         } else {
-          navigate("/NewGame");
+          navigate('/NewGame');
         }
       });
     }
@@ -51,9 +49,9 @@ function Questions() {
       answer.trim().toUpperCase() === questions[indexQuest].answer.toUpperCase()
     ) {
       setNextQuestionPermission(true);
-      setCorrAnsw("Правильно");
+      setCorrAnsw(<p className="card-text">Правильно</p>);
     } else {
-      setCorrAnsw("Неправильно");
+      setCorrAnsw(<p className="card-text">Неправильно</p>);
     }
   }
 
@@ -69,14 +67,16 @@ function Questions() {
             />
             <div className="card-body">
               <h5 className="card-title"> {questions[indexQuest].question} </h5>
-
-              <p className="card-text">
+              {correct && corrAnsw}
+              {/* <p className="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
-              </p>
+              </p> */}
 
               <input
-                onChange={(event) => setAnswer(event.target.value)}
+                onChange={(event) => {
+                  setAnswer(event.target.value), setCorrect(false);
+                }}
                 value={answer}
                 type="text"
                 required
@@ -86,11 +86,10 @@ function Questions() {
                 aria-describedby="inputGroup-sizing-default"
               />
 
-              {correct && corrAnsw}
               <button
                 onClick={checkAnswer}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary m-3"
               >
                 Ответить
               </button>
@@ -98,7 +97,7 @@ function Questions() {
               <button
                 onClick={nextQuestion}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary m-3"
               >
                 Следующий вопрос
               </button>
