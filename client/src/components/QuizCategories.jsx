@@ -6,7 +6,6 @@ function QuizCategories({ topic }) {
 
   function goToQuestions() {
     const { id } = topic;
-    // const { id } = { id: 3 };
     navigate('/questions', { state: { id } });
   }
 

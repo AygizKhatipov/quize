@@ -6,29 +6,23 @@ import apiAxiosInstance from '../service/apiAxiosInstance';
 
 function NewGame() {
   const [topics, setTopics] = useState([]);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   async function getTopics() {
-    // apiAxiosInstance
-    //   .get('/topics')
-    //   .then((res) => setTopics(res.data))
-    //   .catch(({ message }) => console.error(message));
-
     const { data } = await apiAxiosInstance.get('/topics');
-    console.log(data);
-    // setTopics(data);
+
+    setTopics(data);
   }
 
   useEffect(() => {
-    getTopics;
+    getTopics();
   }, []);
 
   return (
     <>
       <NewUser setShow={setShow} />
 
-      {/* {show && <QuizCategories/>} */}
-      {/* {show && topics.map((el) => <QuizCategories key={el.id} topic={el} />)} */}
+      {show && topics.map((el) => <QuizCategories key={el.id} topic={el} />)}
     </>
   );
 }
