@@ -67,10 +67,10 @@ button:focus-visible {
   }
 }
 
-.card {
+/* .card {
   width: 466px;
   height: 467px;
-}
+} */
 
 .card-img, .card-img-top{
   max-width: 400px;
