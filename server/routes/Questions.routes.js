@@ -23,6 +23,17 @@ router.route('/:topicId')
     }
 })
 
+router.route('/:topicId/:id')
+.get(async(req,res)=> {
+    try {
+        const {topicId, id}= req.params
+        const readQuestionsId = await Questions.findAll({where: {topicId,id},})
+        res.status(200).json(readQuestionsId)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+})
+
 
 
 
