@@ -9,10 +9,12 @@ module.exports = {
         {
           title: "Russian language",
           id: 1,
+          img : ""
         },
         {
           title: "Capitals",
           id: 2,
+          img : ""
         },
       ],
       {}
