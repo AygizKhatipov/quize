@@ -9,12 +9,12 @@ module.exports = {
         {
           title: "Russian language",
 
-          img: "",
+          img: "https://maxluki.ru/wp-content/uploads/2023/02/1589698358_4.jpg",
         },
         {
           title: "Capitals",
 
-          img: "",
+          img: "https://avatars.mds.yandex.net/get-games/1892995/2a0000017c18da6cadb3c9549ebba94a5dc1/orig",
         },
       ],
       {}
