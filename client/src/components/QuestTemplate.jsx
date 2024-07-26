@@ -9,11 +9,11 @@ function QuestTemplate({ question, setIndexQuest, questions }) {
     });
   }
 
-  console.log(questions);
+  // console.log(questions);
   return (
     <>
       <div className="card">
-        {/* <img src="..." className="card-img-top" alt="..." /> */}
+        <img src={question?.img} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title"> {question?.question} </h5>
           <p className="card-text">

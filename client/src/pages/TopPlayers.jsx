@@ -4,9 +4,10 @@ import GetTopUsers from '../components/GetTopUsers';
 
 function TopPlayers({ users, setUsers }) {
   const topUsers = () => {
-    apiAxiosInstance.get('/users')
+    apiAxiosInstance
+      .get('/users')
       .then(({ data }) => setUsers(data))
-      .catch(err => console.error(err.message));
+      .catch((err) => console.error(err.message));
   };
 
   useEffect(() => {
@@ -17,7 +18,7 @@ function TopPlayers({ users, setUsers }) {
     <>
       {users ? (
         users.length ? (
-          users.map(user => <GetTopUsers key={user.id} user={user} />)
+          users.map((user) => <GetTopUsers key={user.id} user={user} />)
         ) : (
           <h1>No Data</h1>
         )
