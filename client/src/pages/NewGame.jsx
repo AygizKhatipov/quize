@@ -4,7 +4,7 @@ import QuizCategories from '../components/QuizCategories';
 
 import apiAxiosInstance from '../service/apiAxiosInstance';
 
-function NewGame() {
+function NewGame({ setUser }) {
   const [topics, setTopics] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -20,7 +20,7 @@ function NewGame() {
 
   return (
     <>
-      <NewUser setShow={setShow} />
+      <NewUser setShow={setShow} setUser={setUser} />
 
       {show && topics.map((el) => <QuizCategories key={el.id} topic={el} />)}
     </>
