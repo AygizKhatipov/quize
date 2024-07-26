@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import apiAxiosInstance from "../service/apiAxiosInstance";
-import Questtionss from "./";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import apiAxiosInstance from '../service/apiAxiosInstance';
+import './Questionsss.css';
 
-
-function Questions({ setUser }) {
+function Questions({ setUser, user }) {
   const location = useLocation();
   const { id } = location.state || {};
   const [questions, setQuestions] = useState([]);
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState('');
   const [indexQuest, setIndexQuest] = useState(0);
   const [load, setLoad] = useState(false);
   const [correct, setCorrect] = useState(false);
-  const [corrAnsw, setCorrAnsw] = useState("");
+  const [corrAnsw, setCorrAnsw] = useState('');
   const [nextQuestionPermission, setNextQuestionPermission] = useState(false);
-  const [btn, setBtn] = useState("btn btn-danger m-3");
+  const [btn, setBtn] = useState('btn btn-danger m-3');
 
   async function getQuestions() {
     const { data } = await apiAxiosInstance.get(`/questions/${id}`);
@@ -35,12 +34,13 @@ function Questions({ setUser }) {
           setCorrect(false);
           setNextQuestionPermission(false);
           setAnswer('');
-          setBtn("btn btn-danger m-3");
+          setBtn('btn btn-danger m-3');
           setUser((prev2) => ({ ...prev2, score: prev + 1 }));
-          
+
           return prev + 1;
         } else {
-          navigate("/NewGame");
+          apiAxiosInstance.post('/users', user);
+          navigate('/NewGame');
         }
       });
     }
@@ -52,8 +52,8 @@ function Questions({ setUser }) {
       answer.trim().toUpperCase() === questions[indexQuest].answer.toUpperCase()
     ) {
       setNextQuestionPermission(true);
-      setCorrAnsw(<p className="card-text"  >  Правильно </p>);
-      setBtn("btn btn-success");
+      setCorrAnsw(<p className="card-text"> Правильно </p>);
+      setBtn('btn btn-success');
     } else {
       setCorrAnsw(<p className="card-text">Неправильно</p>);
     }
