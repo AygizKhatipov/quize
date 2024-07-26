@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import apiAxiosInstance from '../service/apiAxiosInstance';
 import './Questionsss.css';
 
 function Questions({ setUser, user }) {
+
   const location = useLocation();
   const { id } = location.state || {};
   const [questions, setQuestions] = useState([]);
@@ -53,9 +55,11 @@ function Questions({ setUser, user }) {
     ) {
       setNextQuestionPermission(true);
       setCorrAnsw(<p className="card-text"> Правильно </p>);
-      setBtn('btn btn-success');
+
+      setBtn("btn btn-success");
+
     } else {
-      setCorrAnsw(<p className="card-text">Неправильно</p>);
+      setCorrAnsw(<p className="card-text2">Неправильно</p>);
     }
   }
 
