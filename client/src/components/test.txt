@@ -93,3 +93,29 @@
       ) : (
         <div>loading</div>
       )}
+
+
+
+
+
+
+
+      ////////
+
+
+
+      {load ? (
+        <QuestTemplate
+          question={questions[indexQuest]}
+          setIndexQuest={setIndexQuest}
+          questions={questions}
+        />
+      ) : (
+        <div>loading</div>
+      )}
+
+
+
+          "username": "postgres",
+    "password": "postgres",
+    "database": "quiz",
