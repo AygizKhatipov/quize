@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import apiAxiosInstance from "../service/apiAxiosInstance";
-import Questtionss from "./";
-
+import "./Questionsss.css";
 
 function Questions() {
-
   const location = useLocation();
   const { id } = location.state || {};
   const [questions, setQuestions] = useState([]);
@@ -49,10 +47,10 @@ function Questions() {
       answer.trim().toUpperCase() === questions[indexQuest].answer.toUpperCase()
     ) {
       setNextQuestionPermission(true);
-      setCorrAnsw(<p className="card-text"  >  Правильно </p>);
+      setCorrAnsw(<p className="card-text"> Правильно </p>);
       setBtn("btn btn-success");
     } else {
-      setCorrAnsw(<p className="card-text">Неправильно</p>);
+      setCorrAnsw(<p className="card-text2">Неправильно</p>);
     }
   }
 
