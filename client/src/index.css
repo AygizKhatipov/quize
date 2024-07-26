@@ -67,10 +67,9 @@ button:focus-visible {
   }
 }
 
-/* .card {
-  width: 466px;
-  height: 467px;
-} */
+.card {
+align-items: center;
+}
 
 .card-img, .card-img-top{
   max-width: 400px;
