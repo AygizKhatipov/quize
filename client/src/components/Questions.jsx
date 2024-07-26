@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import apiAxiosInstance from '../service/apiAxiosInstance';
-import QuestTemplate from './QuestTemplate';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import apiAxiosInstance from "../service/apiAxiosInstance";
+import Questtionss from "./";
+
 
 function Questions() {
+
   const location = useLocation();
   const { id } = location.state || {};
-
   const [questions, setQuestions] = useState([]);
-
-  const [answer, setAnswer] = useState('');
-  // const [inputvalue, setInputvalue] = useState("");
-
+  const [answer, setAnswer] = useState("");
   const [indexQuest, setIndexQuest] = useState(0);
   const [load, setLoad] = useState(false);
   const [correct, setCorrect] = useState(false);
-  const [corrAnsw, setCorrAnsw] = useState('');
+  const [corrAnsw, setCorrAnsw] = useState("");
   const [nextQuestionPermission, setNextQuestionPermission] = useState(false);
+  const [btn, setBtn] = useState("btn btn-danger m-3");
 
   async function getQuestions() {
     const { data } = await apiAxiosInstance.get(`/questions/${id}`);
@@ -34,10 +33,11 @@ function Questions() {
         if (prev < questions.length - 1) {
           setCorrect(false);
           setNextQuestionPermission(false);
-          setAnswer('');
+          setAnswer("");
+          setBtn("btn btn-danger m-3");
           return prev + 1;
         } else {
-          navigate('/NewGame');
+          navigate("/NewGame");
         }
       });
     }
@@ -49,7 +49,8 @@ function Questions() {
       answer.trim().toUpperCase() === questions[indexQuest].answer.toUpperCase()
     ) {
       setNextQuestionPermission(true);
-      setCorrAnsw(<p className="card-text">Правильно</p>);
+      setCorrAnsw(<p className="card-text"  >  Правильно </p>);
+      setBtn("btn btn-success");
     } else {
       setCorrAnsw(<p className="card-text">Неправильно</p>);
     }
@@ -94,11 +95,7 @@ function Questions() {
                 Ответить
               </button>
 
-              <button
-                onClick={nextQuestion}
-                type="button"
-                className="btn btn-primary m-3"
-              >
+              <button onClick={nextQuestion} type="button" className={btn}>
                 Следующий вопрос
               </button>
             </div>
