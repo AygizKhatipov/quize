@@ -11,15 +11,16 @@ import React, { useState } from 'react'
 
 function App() {
   const [users, setUsers]= useState(null)
+  const [user, setUser] = useState({name:'', score:0});
   return (
     <>
       <BrowserRouter>
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/newgame" element={<NewGame />} />
+          <Route path="/newgame" element={<NewGame  setUser={setUser}     />} />
           <Route path="/topplayers" element={<TopPlayers users={users} setUsers={setUsers} />} />
-          <Route path="/questions" element={<Questions />} />
+          <Route path="/questions" element={<Questions user={user}    setUser={setUser}    />} />
           <Route path="/*" element={<Error/>} />
         </Routes>
       </BrowserRouter>

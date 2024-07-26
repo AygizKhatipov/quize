@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-function NewUser({ setShow }) {
-  const [name, setName] = useState('');
+function NewUser({ setShow, setUser }) {
+  
 
   function preventDefault(event) {
     event.preventDefault();
@@ -13,7 +13,9 @@ function NewUser({ setShow }) {
       <form onSubmit={preventDefault}>
         <div className="input-group mb-3">
           <input
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) =>
+              setUser((prev) => ({ ...prev, name: event.target.value }))
+            }
             type="text"
             required
             placeholder="Введите имя"

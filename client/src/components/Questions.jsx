@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import apiAxiosInstance from '../service/apiAxiosInstance';
 import QuestTemplate from './QuestTemplate';
 
-function Questions() {
+function Questions({ setUser }) {
   const location = useLocation();
   const { id } = location.state || {};
 
@@ -24,6 +24,8 @@ function Questions() {
     setLoad(true);
   }
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -35,6 +37,8 @@ function Questions() {
           setCorrect(false);
           setNextQuestionPermission(false);
           setAnswer('');
+
+          setUser((prev2) => ({ ...prev2, score: prev + 1 }));
           return prev + 1;
         } else {
           navigate('/NewGame');
